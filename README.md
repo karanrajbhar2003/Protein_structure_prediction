@@ -3,6 +3,19 @@
 ProSutra provides a protein structure workflow with modeling, validation, and report generation utilities.  
 You can run it as a CLI pipeline, Streamlit app, or Electron desktop app.
 
+## Achievements
+
+1. **Aavishkar Research Convention (University of Mumbai, 2025-26)**  
+   ProSutra was presented at the 20th Aavishkar Inter-Collegiate/Institute/Department Research Convention (Zonal Round) hosted at D.G. Ruparel College, Mumbai, under the Pure Sciences category (Postgraduate level). The project advanced to the podium round from Zone I (Mumbai I).
+2. **SRIJNA National Level Poster Competition**  
+   ProSutra was presented at SRIJNA (GNIRD, Guru Nanak Khalsa College, Matunga, Mumbai) and received **Second Place** for research relevance, technical innovation, and presentation clarity.
+
+## Thesis
+
+The thesis copy is available in this repository at:
+
+`Thesis/ProSutra_Thesis.pdf`
+
 ## User Installation Guide
 
 ### 1. Prerequisites
