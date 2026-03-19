@@ -1,0 +1,998 @@
+/*
+================================================================================
+Phase 2: Foundation Updates
+- Global CSS Reset & Variables
+- Professional Typography
+- Base Layout Styles
+================================================================================
+*/
+
+/* 1. CSS RESET */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+button, input, select, textarea {
+    font: inherit;
+}
+
+/* 2. CSS VARIABLES (THEME) */
+:root {
+  --primary-blue: #1e40af;
+  --secondary-blue: #3b82f6;
+  --success-green: #10b981;
+  --warning-orange: #f59e0b;
+  --error-red: #ef4444;
+  
+  --bg-primary: #f8fafc;        /* Light gray, almost white */
+  --bg-secondary: #ffffff;      /* Pure white for cards/panels */
+  --bg-tertiary: #f1f5f9;       /* Slightly darker gray for hovers */
+  
+  --text-primary: #1e293b;      /* Dark slate for headings */
+  --text-secondary: #64748b;    /* Muted gray for body text */
+  --text-accent: var(--primary-blue);
+  
+  --border-color: #e2e8f0;
+  
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+/* 3. BASE & TYPOGRAPHY STYLES */
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-primary);
+    color: var(--text-secondary);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow: hidden; /* Prevent body scroll */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+h1 { font-size: 36px; }
+h2 { font-size: 24px; }
+h3 { font-size: 20px; }
+h4 { font-size: 18px; }
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--text-accent);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--secondary-blue);
+}
+
+/* 4. BASE LAYOUT */
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 100vh;
+    background-color: var(--bg-primary);
+}
+
+.main-workspace {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 2rem; /* Add padding to the main content area */
+}
+
+.page {
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.page-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+.page-header h1 {
+    font-size: 2rem;
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-tertiary);
+}
+::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 5px;
+    border: 2px solid var(--bg-tertiary);
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #94a3b8;
+}
+
+/*
+================================================================================
+Phase 3: Component Redesign (Stubs)
+- Basic styles for components that will be refined.
+================================================================================
+*/
+
+/* Sidebar */
+.sidebar {
+    width: 280px; /* As per plan */
+    background-color: var(--bg-secondary);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem; /* 24px */
+    transition: width 0.3s ease;
+    flex-shrink: 0;
+}
+
+.sidebar-header {
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+#app-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+}
+
+.sidebar-header h1 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.sidebar-nav {
+    list-style: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-weight: 500;
+}
+.nav-icon {
+    display: grid;
+    place-items: center;
+    margin-right: 1rem;
+    color: var(--text-secondary);
+}
+.nav-icon svg {
+    width: 24px;
+    height: 24px;
+}
+.nav-item:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+.nav-item.active {
+    background-color: var(--primary-blue);
+    color: white;
+}
+.nav-item.active .nav-icon {
+    color: white;
+}
+.nav-item.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: transparent !important;
+    color: var(--text-secondary) !important;
+}
+
+/* Log Panel */
+.log-panel {
+    height: 250px;
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    transition: height 0.2s ease;
+}
+
+.log-panel.collapsed {
+    height: 48px;
+}
+
+.log-panel.collapsed .log-content-area {
+    display: none;
+}
+
+.log-panel.collapsed .log-header {
+    border-bottom: none;
+}
+
+.log-panel.collapsed #log-pause-toggle,
+.log-panel.collapsed #log-copy {
+    display: none;
+}
+.log-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+.log-header h4 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+.log-content-area {
+    flex-grow: 1;
+    overflow-y: scroll;
+    padding: 1rem 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    white-space: pre-wrap;
+    color: var(--text-secondary);
+}
+.log-line.error { color: var(--error-red); }
+.log-line.warning { color: var(--warning-orange); }
+.log-line.success { color: var(--success-green); }
+
+
+/* Generic Components */
+.card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem; /* 24px */
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.5rem;
+}
+
+.card h3 {
+    font-size: 1.25rem;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.625rem 1.25rem; /* 10px 20px */
+    border-radius: var(--radius-md);
+    border: 1px solid transparent;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: white;
+    border-color: var(--primary-blue);
+}
+.btn-primary:hover:not(:disabled) {
+    background-color: #1a368a; /* Darker primary */
+    box-shadow: var(--shadow-md);
+}
+.btn-primary:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+.btn-secondary {
+    background-color: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border-color: var(--border-color);
+}
+.btn-secondary:hover:not(:disabled) {
+    background-color: #e2e8f0;
+    border-color: #cbd5e1;
+    color: var(--text-primary);
+}
+.btn-danger {
+    background-color: var(--error-red);
+    color: white;
+    border-color: var(--error-red);
+}
+.btn-danger:hover:not(:disabled) {
+    background-color: #dc2626;
+    border-color: #dc2626;
+}
+
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="email"],
+textarea,
+select {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.2);
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.checkbox-group, .radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.checkbox-group label, .radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+input[type="checkbox"], input[type="radio"] {
+    width: auto;
+    height: 1.1em;
+    width: 1.1em;
+    accent-color: var(--primary-blue);
+}
+
+/* Specific page layout containers */
+.project-management, .modeling-form, .validation-form, .settings-form {
+    max-width: 800px;
+}
+
+/*
+================================================================================
+Phase 3.1: Dashboard Component Styles
+================================================================================
+*/
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.project-list {
+    margin-top: -1rem; /* Counteract the first item's margin-top */
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 0.5rem; /* For scrollbar spacing */
+}
+
+.project-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    margin-top: 0.5rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
+}
+
+.project-row.active {
+    background-color: var(--secondary-blue);
+    border-color: var(--primary-blue);
+}
+
+.project-name {
+    flex: 1;
+    font-weight: 500;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.project-row.active .project-name {
+    color: white;
+}
+
+.project-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.project-item {
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    margin-top: 0.5rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    border: 1px solid var(--border-color);
+}
+
+.project-item:hover {
+    background-color: var(--bg-tertiary);
+    border-color: #d1d5db;
+}
+
+.project-item.active {
+    background-color: var(--secondary-blue);
+    color: white;
+    border-color: var(--primary-blue);
+}
+
+/* Update log panel buttons */
+.log-header .btn {
+    padding: 0.25rem 0.75rem;
+    background-color: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.log-header .btn:hover {
+    background-color: #e2e8f0;
+    border-color: #cbd5e1;
+    color: var(--text-primary);
+}
+
+/*
+================================================================================
+Phase 3.2: Modeling, Validation & Settings Page Styles
+================================================================================
+*/
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+.table-container {
+    margin-top: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.table-container th, .table-container td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+.table-container th {
+    background-color: var(--bg-tertiary);
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--text-primary);
+}
+.table-container tr:last-child td {
+    border-bottom: none;
+}
+
+/* Boxed Radio Buttons */
+.radio-group-boxed {
+    display: flex;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+.radio-group-boxed label {
+    flex: 1;
+    text-align: center;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    background-color: var(--bg-secondary);
+    transition: background-color 0.2s ease;
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin: 0;
+}
+.radio-group-boxed label:not(:last-child) {
+    border-right: 1px solid var(--border-color);
+}
+.radio-group-boxed input[type="radio"] {
+    display: none; /* Hide the actual radio button */
+}
+.radio-group-boxed input[type="radio"]:checked + span {
+    color: var(--primary-blue);
+}
+.radio-group-boxed label:has(input:checked) {
+    background-color: #dbeafe; /* Light blue */
+}
+
+
+/* File Drop Zone */
+.file-drop-zone {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius-lg);
+    background-color: var(--bg-primary);
+    cursor: pointer;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+.file-drop-zone:hover, .file-drop-zone.dragover {
+    border-color: var(--primary-blue);
+    background-color: #eff6ff; /* Lighter blue */
+}
+.file-drop-zone-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+.file-drop-zone-text {
+    text-align: center;
+    color: var(--text-secondary);
+}
+.file-drop-zone-text svg {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 1rem;
+    color: var(--text-accent);
+    opacity: 0.5;
+}
+.file-drop-zone-text p {
+    margin: 0;
+    line-height: 1.4;
+}
+.file-drop-zone-text b {
+    color: var(--text-accent);
+}
+.file-drop-zone-subtext {
+    font-size: 0.875rem;
+    margin-top: 0.25rem !important;
+}
+
+/* Checkbox Grid */
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+.checkbox-grid label {
+    background-color: var(--bg-tertiary);
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+}
+.checkbox-grid label:hover {
+    border-color: var(--primary-blue);
+}
+.checkbox-grid label:has(input:checked) {
+    background-color: #dbeafe;
+    border-color: var(--primary-blue);
+    color: var(--text-primary);
+}
+
+
+/* Settings Page Layouts */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 2rem;
+}
+
+.file-input-group {
+    display: flex;
+    gap: 0.5rem;
+}
+.file-input-group input {
+    flex-grow: 1;
+}
+.file-input-group .btn {
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/*
+================================================================================
+Phase 3.3: Reports Page Styles
+================================================================================
+*/
+
+.model-report-container {
+    margin-bottom: 2.5rem;
+}
+
+.reports-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+#reports-status {
+    margin: 0 0 1.5rem 0;
+}
+
+#reports-results:empty::before {
+    content: "No report cards yet.";
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.model-report-container > h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.report-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+/* The .report-card is the same as .card, so we just need to style its contents */
+.report-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+    margin: -1.5rem -1.5rem 1.5rem -1.5rem;
+    background-color: var(--bg-tertiary);
+    border-bottom: 1px solid var(--border-color);
+}
+.report-card .card-header h3 {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 1.1rem;
+}
+.report-card .card-body {
+    padding: 0;
+}
+
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.status-badge.pending { background-color: #e2e8f0; color: #475569; }
+.status-badge.success, .status-badge.completed { background-color: #d1fae5; color: #065f46; }
+.status-badge.error, .status-badge.failed { background-color: #fee2e2; color: #991b1b; }
+
+
+.report-card pre {
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    white-space: pre-wrap;
+    word-break: break-all;
+    font-size: 0.8em;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.report-card .image-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.report-card .image-container img {
+    border-radius: var(--radius-md);
+    background-color: white;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.report-card details {
+    margin-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1rem;
+}
+
+.report-card summary {
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--text-secondary);
+    list-style: revert; /* Use default triangle */
+}
+.report-card summary:hover {
+    color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+    .reports-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/*
+================================================================================
+Phase 4: Polish & Final Touches
+================================================================================
+*/
+
+#file-list-display {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+}
+#file-list-display ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+#file-list-display li {
+    background-color: var(--bg-tertiary);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 0.5rem;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/*
+================================================================================
+About & Help Page Specifics
+================================================================================
+*/
+.about-nav {
+    display: flex;
+    padding: 0.5rem;
+    margin-bottom: 1.5rem;
+    background-color: var(--bg-tertiary);
+    border-radius: var(--radius-lg);
+}
+.about-nav-item {
+    flex: 1;
+    text-align: center;
+    background: none;
+    border: none;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.about-nav-item:hover {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+.about-nav-item.active {
+    background-color: var(--bg-secondary);
+    color: var(--primary-blue);
+    box-shadow: var(--shadow-sm);
+}
+.about-pane.active {
+    display: block;
+}
+.about-pane {
+    display: none;
+}
+.feature-list {
+    margin-left: 1.5rem;
+    line-height: 1.8;
+}
+.developer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+.dev-card {
+    background-color: var(--bg-tertiary);
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    text-align: center;
+}
+.dev-card h4 {
+    margin: 0;
+    color: var(--text-primary);
+}
+
+.workflow-diagram {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.workflow-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+}
+.workflow-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: var(--bg-tertiary);
+    color: var(--text-accent);
+    display: grid;
+    place-items: center;
+}
+.workflow-icon svg {
+    width: 32px;
+    height: 32px;
+}
+.workflow-label {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+.workflow-arrow {
+    font-size: 2rem;
+    color: var(--border-color);
+    font-weight: bold;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.step-circle {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: var(--primary-blue);
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    line-height: 28px;
+    margin-right: 0.75rem;
+}
+
+.help-container ol, .help-container ul {
+    padding-left: 2.5rem;
+}
+.help-container li {
+    margin-bottom: 0.75rem;
+}
+.help-container ul li {
+    margin-top: 0.5rem;
+}
+
+/* Progress Bar Styles */
+.progress-container {
+    width: 100%;
+    background-color: var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    position: relative;
+    height: 24px;
+    border: 1px solid var(--border-color);
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background-color: var(--success-green);
+    transition: width 0.3s ease-in-out;
+    border-radius: var(--radius-sm);
+}
+
+.progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.download-status {
+    margin-top: 0.625rem;
+    min-height: 1.25rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.download-status.success {
+    color: var(--success-green);
+}
+
+.download-status.error {
+    color: var(--error-red);
+}
+
+.progress-bar.error {
+    background-color: var(--error-red);
+}

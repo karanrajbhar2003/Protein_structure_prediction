@@ -1,0 +1,45 @@
+{
+  "name": "prosutra-desktop",
+  "version": "1.0.0",
+  "description": "Desktop application for ProSutra protein structure prediction.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "author": "Gemini",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "electron-store": "^5.2.0",
+    "lucide-react": "^0.395.0",
+    "ws": "^8.14.2"
+  },
+  "devDependencies": {
+    "electron": "^39.2.7",
+    "electron-builder": "^24.9.1"
+  },
+  "build": {
+    "appId": "com.prosutra.app",
+    "productName": "ProSutra",
+    "icon": "logo.png",
+    "compression": "store",
+    "files": [
+      "**/*",
+      "node_modules/dotenv/**/*",
+      "node_modules/ws/**/*"
+    ],
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "createDesktopShortcut": true,
+      "menuCategory": true,
+      "uninstallDisplayName": "ProSutra 1.0.0",
+      "warningsAsErrors": false
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "logo.png"
+    }
+  }
+}

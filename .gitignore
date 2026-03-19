@@ -1,0 +1,57 @@
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+*.egg-info/
+*.log
+
+# Node/Electron
+node_modules/
+**/node_modules/
+electron-app/dist/
+electron-app/build/
+electron-app/out/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Runtime/generated outputs
+results/
+Outputs/
+debug_robetta/
+streamlit_workspace/
+electron-app/results/
+electron-app/debug_robetta/
+scripts/tempCodeRunnerFile.py
+scripts/molprobity.out
+scripts/strip_log.txt
+streamlit_app/last_run_notes.txt
+
+# Local tool installs (keep out of git; install separately)
+Modeller10.7/
+VoroMQA/
+
+# Local credentials/session files
+.env
+.env.*
+!.env.example
+cookies.json
+electron-app/cookies.json
+scripts/config.json
+streamlit_app/config.json
+
+# Generated data snapshots
+data/website_qmean/

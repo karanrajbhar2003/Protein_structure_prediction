@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProSutra</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/jetbrains-mono" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- ====================================================================== -->
+        <!-- 1. NAVIGATION SIDEBAR (REDESIGNED)                                   -->
+        <!-- ====================================================================== -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo-container">
+                    <img src="logo.png" alt="ProSutra Logo" id="app-logo">
+                    <h1>ProSutra</h1>
+                </div>
+            </div>
+            <ul class="sidebar-nav">
+                <li class="nav-item active" data-page="dashboard">
+                    <span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path fill-rule="evenodd" d="M4.5 2.25a.75.75 0 000 1.5v16.5a.75.75 0 000 1.5h15a.75.75 0 000-1.5V3.75a.75.75 0 000-1.5h-15zM9 6a.75.75 0 000 1.5h6a.75.75 0 000-1.5H9zm-1.5 3.75a.75.75 0 01.75-.75h9a.75.75 0 010 1.5h-9a.75.75 0 01-.75-.75zM9 15a.75.75 0 000 1.5h6a.75.75 0 000-1.5H9z" clip-rule="evenodd" /></svg></span>
+                    <span>Dashboard</span>
+                </li>
+                <li class="nav-item" data-page="modeling">
+                    <span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path fill-rule="evenodd" d="M15.28 7.42a.75.75 0 01.04 1.06l-4.25 4.25a.75.75 0 001.06 1.06l4.25-4.25a.75.75 0 011.06-.04zM10.28 15.53a.75.75 0 00-1.06-1.06l-4.25 4.25a.75.75 0 101.06 1.06l4.25-4.25z" clip-rule="evenodd" /><path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L9 7.94l-1.06 1.06-2.47-2.47a.75.75 0 010-1.06zM18.53 18.53a.75.75 0 010-1.06l2.47-2.47-1.06-1.06-2.47 2.47a.75.75 0 01-1.06 0l-1.53-1.53a.75.75 0 111.06-1.06l1.53 1.53.97-.97a.75.75 0 00-1.06-1.06l-.97.97-4.25-4.25a.75.75 0 00-1.06 0l-4.25 4.25a.75.75 0 000 1.06l4.25 4.25a.75.75 0 001.06 0L12.06 15l1.06 1.06-2.47 2.47a.75.75 0 01-1.06 0l-2.47-2.47-1.06 1.06 2.47 2.47a.75.75 0 001.06 0l2.47-2.47 1.06 1.06-.97.97a.75.75 0 101.06 1.06l.97-.97 1.53 1.53a.75.75 0 010 1.06l-1.53 1.53-1.06-1.06-.97.97a.75.75 0 101.06 1.06l.97-.97 2.47 2.47a.75.75 0 001.06 0l2.47-2.47 1.06 1.06-2.47 2.47a.75.75 0 01-1.06 0z" clip-rule="evenodd" /></svg></span>
+                    <span>Modeling</span>
+                </li>
+                <li class="nav-item" data-page="validation">
+                    <span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" /></svg></span>
+                    <span>Validation</span>
+                </li>
+                <li class="nav-item" data-page="reports">
+                     <span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M5.625 1.5c-1.036 0-1.875.84-1.875 1.875v17.25c0 1.035.84 1.875 1.875 1.875h12.75c1.035 0 1.875-.84 1.875-1.875V12.75A3.75 3.75 0 0016.5 9h-1.875a.375.375 0 01-.375-.375V6.75A3.75 3.75 0 0010.5 3h-1.875A.375.375 0 018.25 2.625V1.5H5.625z" /><path d="M12.75 3.006c.513 0 .984.213 1.32.56a.75.75 0 01-.99.088c-.54-.423-1.28-.648-2.03-.648-2.347 0-4.125 1.95-4.125 4.125v.375h9v-.375c0-2.175-1.77-4.125-4.125-4.125z" /></svg></span>
+                    <span>Reports</span>
+                </li>
+                <li class="nav-item" data-page="projects">
+                    <span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path fill-rule="evenodd" d="M2.25 3.75A1.5 1.5 0 013.75 2.25h6.188c.462 0 .901.19 1.22.512l4.312 4.313a.75.75 0 01.218.53V20.25a1.5 1.5 0 01-1.5 1.5H3.75a1.5 1.5 0 01-1.5-1.5V3.75zM12.75 12a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V18a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V12z" clip-rule="evenodd" /></svg></span>
+                    <span>Projects</span>
+                </li>
+                <li class="nav-item" data-page="settings">
+                    <span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path fill-rule="evenodd" d="M11.078 2.25c-.917 0-1.699.663-1.85 1.567L9.05 5.85a1.58 1.58 0 01-.84.84l-2.037.175a1.875 1.875 0 00-1.567 1.85L4.58 11.08a1.58 1.58 0 01-.84.84l-2.037.175a1.875 1.875 0 00-1.567 1.85L4.58 16.42a1.58 1.58 0 01.84.84l2.037.175a1.875 1.875 0 001.567 1.85l.175 2.037a1.875 1.875 0 001.85 1.567l2.493-.213a1.58 1.58 0 011.08.356l1.62 1.38a1.875 1.875 0 002.434-.14l.002-.002 1.92-2.304a1.58 1.58 0 01.99-.54l2.295-.31a1.875 1.875 0 001.487-2.067l-.214-2.494a1.58 1.58 0 01.356-1.08l1.38-1.62a1.875 1.875 0 00-.14-2.434l-2.304-1.92a1.58 1.58 0 01-.54-.99l-.31-2.295a1.875 1.875 0 00-2.067-1.487l-2.494.214a1.58 1.58 0 01-1.08-.356l-1.62-1.38a1.875 1.875 0 00-2.434.14l-2.304 1.92a1.58 1.58 0 01-.99.54l-2.295.31a1.875 1.875 0 00-2.067 1.487l-.214 2.494a1.58 1.58 0 01-.356 1.08l-1.38 1.62a1.875 1.875 0 00.14 2.434l2.304 1.92a1.58 1.58 0 01.54.99l.31 2.295a1.875 1.875 0 002.067 1.487l2.494-.214a1.58 1.58 0 011.08.356l1.62 1.38a1.875 1.875 0 002.434-.14l2.304-1.92a1.58 1.58 0 01.99-.54l2.295-.31a1.875 1.875 0 001.487-2.067l-.214-2.494a1.58 1.58 0 01.356-1.08l1.38-1.62a1.875 1.875 0 00-.14-2.434l-2.304-1.92a1.58 1.58 0 01-.54-.99l-.31-2.295a1.875 1.875 0 00-2.067-1.487L13.19 5.85a1.58 1.58 0 01-1.08-.356l-1.62-1.38a1.875 1.875 0 00-2.434.14L5.75 6.533a1.58 1.58 0 01-.99.54l-2.295.31a1.875 1.875 0 00-1.487 2.067l.214 2.494a1.58 1.58 0 01-.356 1.08l-1.38 1.62a1.875 1.875 0 00.14 2.434l2.304 1.92a1.58 1.58 0 01.54.99l.31 2.295a1.875 1.875 0 002.067 1.487l2.494-.214a1.58 1.58 0 011.08.356l1.62 1.38a1.875 1.875 0 002.434-.14l.002-.002 1.92-2.304a1.58 1.58 0 01.99-.54l2.295-.31a1.875 1.875 0 001.487-2.067l-.214-2.494a1.58 1.58 0 01.356-1.08l1.38-1.62a1.875 1.875 0 00-.14-2.434l-2.304-1.92a1.58 1.58 0 01-.54-.99l-.31-2.295a1.875 1.875 0 00-2.067-1.487l-2.494.214a1.58 1.58 0 01-1.08-.356L9.05 3.817A1.875 1.875 0 007.199 2.25H4.667a1.875 1.875 0 00-1.85 1.567L2.642 5.85a1.58 1.58 0 01-.84.84l-2.037.175A1.875 1.875 0 00-.306 8.715L4.275 11.08a1.58 1.58 0 01.84.84l2.037.175a1.875 1.875 0 001.85 1.567h2.533c.917 0 1.699-.663 1.85-1.567L13.56 9.85a1.58 1.58 0 01.84-.84l2.037-.175a1.875 1.875 0 001.567-1.85L18.42 4.42a1.58 1.58 0 01-.84-.84l-2.037-.175a1.875 1.875 0 00-1.85-1.567H11.078z" clip-rule="evenodd" /></svg></span>
+                    <span>Settings</span>
+                </li>
+                <li class="nav-item" data-page="about">
+                    <span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 01.67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 11-.671-1.34l.04-.022zM12 9a.75.75 0 100-1.5.75.75 0 000 1.5z" clip-rule="evenodd" /></svg></span>
+                    <span>About</span>
+                </li>
+                <li class="nav-item" data-page="help">
+                    <span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm11.378-3.917c-.89-1.42-2.5-2.333-4.378-2.333s-3.488.913-4.378 2.333c-.09.145-.09.334 0 .479.203.324.417.626.64.908.222.282.46.54.714.772.254.232.523.438.808.612.286.173.585.313.9.416.314.102.638.156.97.156.332 0 .656-.054.97-.156.315-.103.614-.243.9-.416.285-.174.554-.38.808-.612.254-.232.492-.49.714-.772.223-.282.437-.584.64-.908.09-.145.09-.334 0-.479zM10.5 15a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z" clip-rule="evenodd" /></svg></span>
+                    <span>Help</span>
+                </li>
+            </ul>
+        </nav>
+        <div class="content-wrapper">
+            <main class="main-workspace">
+                <!-- ====================================================================== -->
+                <!-- DASHBOARD PAGE (REDESIGNED)                                        -->
+                <!-- ====================================================================== -->
+                <div id="dashboard" class="page active">
+                    <div class="page-header">
+                        <h1>Dashboard</h1>
+                        <p class="text-secondary" style="margin-top: 0.5rem;">Create a new project or manage existing ones.</p>
+                    </div>
+
+                    <!-- Active Project Display Card -->
+                    <div class="card" style="margin-bottom: 2rem; background-color: #e0f2fe; border-color: #7dd3fc;">
+                        <h3 style="border: none; padding: 0; margin: 0; font-size: 1.125rem;">Active Project: <span id="active-project-display" style="font-weight: 700; color: var(--primary-blue);">No project selected.</span></h3>
+                    </div>
+
+                    <!-- Grid for Project Management -->
+                    <div class="dashboard-grid">
+                        <div class="card">
+                            <h3>Create New Project</h3>
+                            <div class="form-group">
+                                <label for="new-project-name">Project Name</label>
+                                <input type="text" id="new-project-name" placeholder="e.g., Lysozyme_Analysis">
+                            </div>
+                            <button id="create-project-btn" class="btn btn-primary" style="width: 100%;">Create Project</button>
+                        </div>
+
+                        <div class="card">
+                            <h3>Select Existing Project</h3>
+                            <div id="project-list" class="project-list">
+                                <!-- Projects will be listed here dynamically -->
+                                <p>No projects found. Create one to get started!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ====================================================================== -->
+                <!-- OTHER PAGES (Unchanged for now, will be styled next)               -->
+                <!-- ====================================================================== -->
+
+                <!-- ====================================================================== -->
+                <!-- MODELING PAGE (REDESIGNED)                                         -->
+                <!-- ====================================================================== -->
+                <div id="modeling" class="page">
+                    <div class="page-header">
+                        <h1>Protein Modeling</h1>
+                        <p class="text-secondary" style="margin-top: 0.5rem;">Submit modeling jobs to Robetta or run Modeller locally.</p>
+                    </div>
+
+                    <div class="card-grid">
+                        <div class="card">
+                            <h3>New Modeling Job</h3>
+                            <div class="modeling-form">
+                                <div class="form-group">
+                                    <label for="job-name-input">Job Name</label>
+                                    <input type="text" id="job-name-input" placeholder="e.g., T4_lysozyme_model">
+                                </div>
+                                <div class="form-group">
+                                    <label for="fasta-input">FASTA Sequence</label>
+                                    <textarea id="fasta-input" rows="8" placeholder=">T4_lysozyme\n..."></textarea>
+                                    <p id="sequence-length" class="text-secondary" style="margin-top: 0.5rem; font-size: 0.875rem;">Length: 0</p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Modeling Tools</label>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" id="run-modeller-checkbox" checked> Run Modeller</label>
+                                        <label><input type="checkbox" id="run-robetta-checkbox"> Run Robetta</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="num-models-input">Number of Models (Modeller)</label>
+                                    <input type="number" id="num-models-input" value="5" min="1" max="50">
+                                </div>
+                                <button id="run-modeling-btn" class="btn btn-primary" style="width: 100%;">Run Modeling</button>
+                                <div class="progress-container" style="margin-top: 1rem;">
+                                    <div class="progress-bar" id="modeling-progress-bar"></div>
+                                    <span class="progress-text" id="modeling-progress-text">0%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <h3>Robetta Job Management</h3>
+                            <div class="robetta-management">
+                                <div class="form-group">
+                                    <label for="robetta-job-id-input">Download Robetta Job by ID</label>
+                                    <input type="text" id="robetta-job-id-input" placeholder="e.g., 123456">
+                                </div>
+                                <button id="download-robetta-job-btn" class="btn btn-secondary" style="width: 100%; margin-bottom: 1rem;">Download Job</button>
+                                <div id="robetta-download-progress" class="progress-container" style="display: none; margin-top: 0.25rem;">
+                                    <div class="progress-bar" id="robetta-download-progress-bar"></div>
+                                    <span class="progress-text" id="robetta-download-progress-text">0%</span>
+                                </div>
+                                <p id="robetta-download-status" class="download-status"></p>
+                                <hr style="margin: 1.5rem 0; border-color: var(--border-color); border-style: solid;">
+                                <button id="refresh-robetta-queue-btn" class="btn btn-secondary" style="width: 100%;">Refresh Queue</button>
+                                <div id="robetta-queue-container" class="table-container">
+                                    <!-- Robetta job queue will be displayed here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ====================================================================== -->
+                <!-- VALIDATION PAGE (REDESIGNED)                                       -->
+                <!-- ====================================================================== -->
+                <div id="validation" class="page">
+                    <div class="page-header">
+                        <h1>Structure Validation</h1>
+                         <p class="text-secondary" style="margin-top: 0.5rem;">Run a suite of validation tools on your PDB files.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>New Validation Job</h3>
+                        <div class="validation-form">
+                             <div class="form-group">
+                                <label>PDB File Source</label>
+                                <div class="radio-group-boxed" id="pdb-source-selector">
+                                    <label>
+                                        <input type="radio" name="pdb-source" value="project" checked>
+                                        <span>Project Model</span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="pdb-source" value="upload">
+                                        <span>Upload PDB</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div id="pdb-input-container" class="form-group">
+                                <div id="project-model-selector">
+                                    <label for="pdb-model-select">Select Model from Active Project</label>
+                                    <select id="pdb-model-select" multiple size="5"></select>
+                                </div>
+                                <div id="upload-model-selector" style="display: none;">
+                                    <label for="pdb-file-input">Upload PDB File</label>
+                                    <div class="file-drop-zone">
+                                        <input type="file" id="pdb-file-input" accept=".pdb" class="file-drop-zone-input" multiple>
+                                        <div class="file-drop-zone-text">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M9.97.97a.75.75 0 011.06 0l4.5 4.5a.75.75 0 01-1.06 1.06L11.25 3.31V12a.75.75 0 01-1.5 0V3.31L6.53 6.53a.75.75 0 01-1.06-1.06l4.5-4.5zM2.25 12a.75.75 0 01.75.75v6c0 .414.336.75.75.75h16.5a.75.75 0 00.75-.75v-6a.75.75 0 011.5 0v6A2.25 2.25 0 0120.25 21H3.75A2.25 2.25 0 011.5 18.75v-6a.75.75 0 01.75-.75z" /></svg>
+                                            <p><b>Click to upload</b> or drag and drop</p>
+                                            <p class="file-drop-zone-subtext">PDB files only</p>
+                                        </div>
+                                    </div>
+                                    <div id="file-list-display"></div>
+                                </div>
+                            </div>
+
+                            <hr style="margin: 2rem 0; border-color: var(--border-color); border-style: solid;">
+                            
+                            <div class="form-group">
+                                <label>Validation Tools</label>
+                                <div class="checkbox-grid" id="validators-group">
+                                    <label><input type="checkbox" data-validator="pdbfixer" checked> PDBFixer</label>
+                                    <label><input type="checkbox" data-validator="dssp" checked> DSSP</label>
+                                    <label><input type="checkbox" data-validator="freesasa" checked> FreeSASA</label>
+                                    <label><input type="checkbox" data-validator="molprobity" checked> MolProbity</label>
+                                    <label><input type="checkbox" data-validator="prosa" checked> ProSA</label>
+                                    <label><input type="checkbox" data-validator="voromqa" checked> VoroMQA</label>
+                                    <label><input type="checkbox" data-validator="qmean" checked> QMEAN</label>
+                                    <label><input type="checkbox" data-validator="modeller"> Modeller Assessment</label>
+                                </div>
+                            </div>
+                            <button id="run-validation-btn" class="btn btn-primary" style="width: 100%;">Run Validation</button>
+                            <div class="progress-container" style="margin-top: 1rem;">
+                                <div class="progress-bar" id="validation-progress-bar"></div>
+                                <span class="progress-text" id="validation-progress-text">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="reports" class="page">
+                    <div class="page-header reports-header">
+                        <h1>Reports</h1>
+                        <button id="generate-pdf-btn" class="btn btn-primary">Generate PDF</button>
+                    </div>
+                    <p id="reports-status" class="text-secondary">Run validation to generate report cards, then export a consolidated PDF.</p>
+                    <div id="reports-results"></div>
+                </div>
+
+                <div id="projects" class="page">
+                    <div class="page-header">
+                        <h1>Projects</h1>
+                    </div>
+                    <div id="detailed-project-list">
+                        <!-- Detailed project view will go here -->
+                    </div>
+                </div>
+                
+                <!-- ====================================================================== -->
+                <!-- SETTINGS PAGE (REDESIGNED)                                         -->
+                <!-- ====================================================================== -->
+                <div id="settings" class="page">
+                    <div class="page-header">
+                        <h1>Settings</h1>
+                        <p class="text-secondary" style="margin-top: 0.5rem;">Configure credentials and paths for external tools.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Configuration</h3>
+                        <div class="settings-form">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="robetta-user-input">Robetta Username</label>
+                                    <input type="text" id="robetta-user-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="robetta-pass-input">Robetta Password</label>
+                                    <input type="password" id="robetta-pass-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="qmean-email-input">QMEAN Email</label>
+                                    <input type="email" id="qmean-email-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="qmean-token-input">QMEAN Token</label>
+                                    <input type="password" id="qmean-token-input">
+                                </div>
+                            </div>
+
+                            <hr style="margin: 0.5rem 0 2rem 0; border-color: var(--border-color); border-style: solid;">
+
+                            <div class="form-group">
+                                <label for="voromqa-path-input">VoroMQA Path</label>
+                                <input type="text" id="voromqa-path-input">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dssp-path-input">DSSP (mkdssp) Executable Path</label>
+                                <div class="file-input-group">
+                                    <input type="text" id="dssp-path-input" placeholder="Path to mkdssp executable">
+                                    <button id="dssp-path-browse-btn" class="btn btn-secondary">Browse...</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phenix-path-input">Phenix Bin Directory (for MolProbity)</label>
+                                <div class="file-input-group">
+                                    <input type="text" id="phenix-path-input" placeholder="Path to Phenix bin directory">
+                                    <button id="phenix-path-browse-btn" class="btn btn-secondary">Browse...</button>
+                                </div>
+                            </div>
+
+                             <hr style="margin: 2rem 0 1.5rem 0; border-color: var(--border-color); border-style: solid;">
+                            
+                            <button id="save-settings-btn" class="btn btn-primary">Save Settings</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="about" class="page">
+                    <!-- About page content will be loaded here -->
+                </div>
+                <div id="help" class="page">
+                    <!-- Help content will be loaded here dynamically -->
+                </div>
+            </main>
+            <div class="log-panel collapsed">
+                <div class="log-header">
+                    <h4>Logs</h4>
+                    <div>
+                        <button id="log-expand-toggle" class="btn">Show Logs</button>
+                        <button id="log-pause-toggle" class="btn">Pause</button>
+                        <button id="log-copy" class="btn">Copy</button>
+                    </div>
+                </div>
+                <div id="log-content" class="log-content-area"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="renderer.js"></script>
+</body>
+</html>

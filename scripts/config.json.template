@@ -1,0 +1,8 @@
+{
+    "robetta_username": "your_robetta_username",
+    "robetta_password": "your_robetta_password",
+    "qmean_email": "your_email@example.com",
+    "qmean_token": "your_qmean_api_token",
+    "voromqa_path": "/path/to/your/voronota-voromqa",
+    "phenix_path": "/path/to/your/phenix/bin"
+}

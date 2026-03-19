@@ -1,0 +1,9 @@
+{
+  "robetta_user": "your_robetta_username",
+  "robetta_pass": "your_robetta_password",
+  "qmean_email": "your_email@example.com",
+  "qmean_token": "your_qmean_api_token",
+  "voromqa_path": "C:/path/to/voronota-voromqa",
+  "dssp_path": "C:/path/to/mkdssp.exe",
+  "freesasa_path": "C:/path/to/freesasa.exe"
+}
